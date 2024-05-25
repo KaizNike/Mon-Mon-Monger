@@ -45,40 +45,38 @@ while(not choice):
 player = {}
 
 def define_background(lifestyle):
-    match lifestyle:
-        case 0:
-            print("You are a painter, gifted to envision creatures beyond normal sight.")
-        case 1:
-            print("You are an aspiring rap artist, with grand purpose; comes great need. For monster talk.")
-        case 2:
-            print("You are a soldier, your war is ongoing; any edge would be a boon.")
-        case 3:
-            print("You are a young student, ready to explore the world.")
-        case 4:
-            print("You are an elderly teacher, you almost experienced death once and now can witness Beasts.")
-        case 5:
-            print("You are a wildsperson, ready to resume the hunt.")
-        case 6:
-            print("You have noble heritage, you might rule one day, maybe some kicking the start?")
-        case 7:
-            print("You are a rider, granted a normal beast to care for and in return are blessed with speed.")
-        case 8:
-            print("You have a connection with the gods, perhaps they tell you of Elysian Fields.")
-        case 9:
-            print("You are a layabout...")
+    if lifestyle == 0:
+        print("You are a painter, gifted to envision creatures beyond normal sight.")
+    if lifestyle == 1:
+        print("You are an aspiring rap artist, with grand purpose; comes great need. For monster talk.")
+    if lifestyle == 2:
+        print("You are a soldier, your war is ongoing; any edge would be a boon.")
+    if lifestyle == 3:
+        print("You are a young student, ready to explore the world.")
+    if lifestyle == 4:
+        print("You are an elderly teacher, you almost experienced death once and now can witness Beasts.")
+    if lifestyle == 5:
+        print("You are a wildsperson, ready to resume the hunt.")
+    if lifestyle == 6:
+        print("You have noble heritage, you might rule one day, maybe some kicking the start?")
+    if lifestyle == 7:
+        print("You are a rider, granted a normal beast to care for and in return are blessed with speed.")
+    if lifestyle == 8:
+        print("You have a connection with the gods, perhaps they tell you of Elysian Fields.")
+    if lifestyle == 9:
+        print("You are a layabout...")
 
 def define_beastkin(amount):
-    match amount:
-        case "full":
-            print("You sport hair from ear to tail, you are shunned in daily society or maybe worshipped.")
-        case "most":
-            print("Your blood burns from the hatred of the little of the non-Beast in you, for corralling it, for tempting it.")
-        case "half":
-            print("Your mother or father was a beast. This union is forbidden; yet it happened all the same.")
-        case "some":
-            print("Most everyone has some Beast blood, you fit right in that category.")            
-        case "none":
-            print("By some bizzarre turn of fate, you are without the blood of Beasts. Your communion with them is impossible, but bonds of friendship may foster with a few.")
+    if amount == "full":
+        print("You sport hair from ear to tail, you are shunned in daily society or maybe worshipped.")
+    if amount == "most":
+        print("Your blood burns from the hatred of the little of the non-Beast in you, for corralling it, for tempting it.")
+    if amount == "half":
+        print("Your mother or father was a beast. This union is forbidden; yet it happened all the same.")
+    if amount == "some":
+        print("Most everyone has some Beast blood, you fit right in that category.")            
+    if amount == "none":
+        print("By some bizzarre turn of fate, you are without the blood of Beasts. Your communion with them is impossible, but bonds of friendship may foster with a few.")
 
 
 def create_character():
@@ -111,20 +109,18 @@ def create_character():
     
     
 
-if choice:
-    match choice:
-        case "decide my fate":
-            LifeStyle = seed % 10
-            player["background"] = LifeStyle
-            define_background(LifeStyle)
-            options = ["full","most","half","some","none"]
-            BeastNature = seed % 5
-            player["beast"] = options[BeastNature]
-            define_beastkin(options[BeastNature])
-        case "create a character":
-            check = False
-            while(not check):
-                check = create_character()
+if choice and choice == "decide my fate":
+    LifeStyle = seed % 10
+    player["background"] = LifeStyle
+    define_background(LifeStyle)
+    options = ["full","most","half","some","none"]
+    BeastNature = seed % 5
+    player["beast"] = options[BeastNature]
+    define_beastkin(options[BeastNature])
+if choice and choice == "create a character":
+    check = False
+    while(not check):
+        check = create_character()
 
 beastText = ""
 if player["beast"] == "full" or player["beast"] == "most":
@@ -144,36 +140,33 @@ while(not choice):
 mainSettings["ASCIIMODE"] = choice
 ##(!) Update this with new art :)
 def display_ASCII(indx):
-    match mainSettings["ASCIIMODE"]:
-        case "none":
-            return False
-        case "text based":
-            return True
-        case "micro":
-            match indx:
-                case 0:
-                    #Study of a Smoo
-                    print(r'''
+    if mainSettings["ASCIIMODE"] == "none":
+        return False
+    elif mainSettings["ASCIIMODE"] == "text based":
+        return True
+    elif mainSettings["ASCIIMODE"] == "micro":
+        if indx == 0:
+            #Study of a Smoo
+            print(r'''
          \  /
           ||
           ||   ^u^
          /  \ (. .)
 
 ''')
-                case 1:
-                    #Study of a Smoo: Its Eyes Enlarged
-                    print(r'''
+        if indx == 1:
+            #Study of a Smoo: Its Eyes Enlarged
+            print(r'''
          \  /
           ||
           ||   ^u^
          /  \ (o o)
 
 ''')
-        case "full":
-            match indx:
-                case 0:
-                    #Forest at Night
-                    print(r"""
+    elif mainSettings["ASCIIMODE"] == "full":
+        if indx == 0:
+            #Forest at Night
+            print(r"""
 c            H
              H (  )
           ( )H/
@@ -184,6 +177,7 @@ c            H
      L      VVVV
         VVVVVVVVVVVV
        VVVVVVVVVVVVVVV""")
+
 
 happy = ""
 
