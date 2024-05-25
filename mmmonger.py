@@ -88,12 +88,14 @@ def create_character():
         inp = spell_friend(inpLS, input("How much have Beastkind called your card? The beasts of this world resemble those of yours, inhabiting mind rather than body. Be sure to choose one: ~full~/~most~/~half~/~some~/~none~"))
     define_beastkin(inp)
     to_quit = input("If you are happy with that description type ~y~, else we start over.")
-    if to_quit == "y":
+    if to_quit != "y":
         return False
     print("Good! Let's now define your background.")
     player["beast"] = inp
     inp = -1
-    while(0 > inp > 9):
+    #print(player) 
+    #print(inp) ## BUG BAD WHILE CONDITION - FIXED
+    while(not 0 <= inp <= 9):
         inp = input("CHOOSE: 0: Painter, 1: Rapper, 2: Soldier, 3: Student, 4: Teacher, 5: Wildspersonn, 6: Noble One, 7: Rider, 8: Priest, 9: Layabout. Enter a number associated with your choice.")
         try:
             inp = int(inp)
@@ -101,7 +103,7 @@ def create_character():
             print("Enter a choice between 0 and 9. Don't choose 9 if you care.")
     define_background(inp)
     to_quit = input("If you are happy with that description type ~y~, else we start over.")
-    if to_quit == "y":
+    if to_quit != "y":
         return False
     print("Good! We won't bother with such things such as name or gender, such things can be settled later.")
     player["background"] = inp
