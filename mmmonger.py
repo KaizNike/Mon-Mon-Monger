@@ -129,3 +129,74 @@ if player["beast"] == "full" or player["beast"] == "most":
     beastText = " Your BeastBlood is howling, yes!"
 input("Let us begin your adventure into the world of Mon Mon." + beastText + " At these moments you can press anything but the quit keys to continue!")
 #print(spell_friend(choicesLS,choice))
+## DAY 1 PROGRESS REPORT
+# Background and Beast setup, now for the intro crawl!
+
+print("At some point you lost track of where you where and when.\n\nThe world is dangerous once you leave the safe cushion you are used to...\n\n")
+mainSettings = {}
+choicesLS = ["full","micro","text based","none"]
+choice = spell_friend(choicesLS, input(r"Enter your choice for ASCII Art: ~full~/~micro~/~text based~/~none~."))
+while(not choice):
+    choice = spell_friend(choicesLS, input(r"This is our manner of letting our scribes illustrate your adventure, choose: ~full~/~micro~/~text based~/~none~."))
+
+mainSettings["ASCIIMODE"] = choice
+##(!) Update this with new art :)
+def display_ASCII(indx):
+    match mainSettings["ASCIIMODE"]:
+        case "none":
+            return False
+        case "text based":
+            return True
+        case "micro":
+            match indx:
+                case 0:
+                    #Study of a Smoo
+                    print(r'''
+         \  /
+          ||
+          ||   ^u^
+         /  \ (. .)
+
+''')
+                case 1:
+                    #Study of a Smoo: Its Eyes Enlarged
+                    print(r'''
+         \  /
+          ||
+          ||   ^u^
+         /  \ (o o)
+
+''')
+        case "full":
+            match indx:
+                case 0:
+                    #Forest at Night
+                    print(r"""
+c            H
+             H (  )
+          ( )H/
+   vv      \ H           (i)
+            \H            0
+             H           /|\
+    (i)      H
+     L      VVVV
+        VVVVVVVVVVVV
+       VVVVVVVVVVVVVVV""")
+
+happy = ""
+
+while(happy != "y"):
+    textDisplay = display_ASCII(0)
+    if textDisplay:
+        print("You spend a year getting to know the world better, lost as you are. Eventually something calls to you in the dark and you lose memory there...")
+    happy = input("Are you happy with your choice? ~y~ or ~n~.")
+    if happy != "y":
+        choice = spell_friend(choicesLS, input(r"Enter your choice for ASCII Art: ~full~/~micro~/~text based~/~none~."))
+        while(not choice):
+            choice = spell_friend(choicesLS, input(r"This is our manner of letting our scribes illustrate your adventure, choose: ~full~/~micro~/~text based~/~none~."))
+
+        mainSettings["ASCIIMODE"] = choice
+if mainSettings["ASCIIMODE"] == "micro":
+    display_ascii(1)
+input("Press enter.")
+## END OF SETUP
