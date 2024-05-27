@@ -154,7 +154,7 @@ def display_ASCII(indx):
          /  \ (. .)
 
 ''')
-        if indx == 1:
+        if indx == -1:
             #Study of a Smoo: Its Eyes Enlarged
             print(r'''
          \  /
@@ -163,6 +163,25 @@ def display_ASCII(indx):
          /  \ (o o)
 
 ''')
+        if indx == 1:
+            #Wide World - Hilly Small
+            print(r'''
+- <x> -
+  / \   ^   ^4^ ^
+''')
+        if indx == 2:
+            #Wide World - Forests Small
+            print(r'''
+- <x> -  ^^^^ ^   ^^^^^^
+  / \     ^^ ^^^   ^^^^^^^^^^^^
+''')
+        if indx == 3:
+            #Wide World - P Fields Small
+            print(r'''
+- <x> -     PPPP    PPPP P
+  / \   PPPP    PPPP   PP
+''')
+    
     elif mainSettings["ASCIIMODE"] == "full":
         if indx == 0:
             #Forest at Night
@@ -177,6 +196,51 @@ c            H
      L      VVVV
         VVVVVVVVVVVV
        VVVVVVVVVVVVVVV""")
+        if indx == 1:
+            #Wide World - Hilly
+            print(r"""
+
+
+                  - <x> -
+                    / \
+
+    ___/----\
+---4         3--------------
+
+
+
+
+""")
+        if indx == 2:
+            #Wide World - Forests
+            print(r"""
+
+     V
+    (   )      ) (  - <x> -
+      |         H     / \
+     /          H
+    /           H
+---4--^^-^--3--VHV----^^^---
+\               
+ \      <(oo) (uu)    
+  4                    ( )
+
+""")
+        if indx == 3:
+            #Wide World - P Fields
+            print(r"""
+
+
+                  - <x> -
+                    / \
+         P
+ P  ___/----\    P   P
+---4         3-------------
+PP
+P       P      PiP
+PP            PPP
+              PPP
+""")
 
 
 happy = ""
@@ -193,6 +257,15 @@ while(happy != "y"):
 
         mainSettings["ASCIIMODE"] = choice
 if mainSettings["ASCIIMODE"] == "micro":
-    display_ascii(1)
+    display_ascii(-1)
 input("Press enter.")
 ## END OF SETUP
+
+print("/nCHAPTER 1: The Starter Mon Picks You")
+n = ((seed + 77) % 3) + 1
+display_ASCII(n)
+
+##(!) Update this with encounters of all areas.
+def encounter_library():
+    pass
+
